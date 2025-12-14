@@ -28,6 +28,7 @@ public class StudentManager {
             System.exit(0);
         } else {
             System.out.println("Invalid choice. Please try again.");
+            mainMenu();
         }
     }
 
@@ -35,6 +36,12 @@ public class StudentManager {
         // Prompt the user to enter a new student name (using scanner and I/O methods learned previously,
         // refer to mainMenu() for an example)
         // Add the student to the list
+
+        System.out.println("Enter a new student: ");
+        String newStudent = scanner.nextLine();
+
+        students.add(newStudent);
+        System.out.println(newStudent + " was added.");
 
         mainMenu();
     }
@@ -44,12 +51,25 @@ public class StudentManager {
         // Use the contains method to check if the student entered is in the list
         // If so, remove it, if not, print "Student not found."
 
+        System.out.println("Enter the student to remove");
+        String removeStudent = scanner.nextLine();
+
+        if (students.contains(removeStudent)){
+            students.remove(removeStudent);
+            System.out.println(removeStudent + " has been removed.");
+        } else {
+            System.out.println("Student not found");
+        }
+
         mainMenu();
     }
 
     public void viewStudents() {
         // Loop through the list of students and print each one
         // (Use a for-each loop!)
+        for(String student : students){
+            System.out.println(student);
+        }
         mainMenu();
     }
 }
